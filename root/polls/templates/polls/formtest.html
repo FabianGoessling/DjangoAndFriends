@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+<form method="post">
+  {% csrf_token %}
+       {{ formset.management_form }}
+       <div style="display:none;" id="form_template">
+           {{ formset.empty_form.as_p }}
+       </div><!-- stores empty form for javascript -->
+       <div id="forms"></div><!-- where the generated forms go -->
+        <input type="submit" value="OK">
+   </form>
+   <input type="text" name="quantity" value="6" />
+   <input type="submit" id="generate_forms" value="Generate Forms" />
+
+
+   <script>
+     $(function() {
+         // this is on click event just to demo.
+         // You would probably run this at page load or quantity change.
+         $("#generate_forms").click(function() {
+             // update total form count
+             quantity = $("[name=quantity]").val();
+             $("[name=form-TOTAL_FORMS]").val(quantity);
+
+             // copy the template and replace prefixes with the correct index
+             for (i=0;i<quantity;i++) {
+                 // Note: Must use global replace here
+                 html = $("#form_template").clone().html().replace('/__prefix_/g', i);
+                 $("#forms").append(html);
+             };
+         })
+     })
+ </script>

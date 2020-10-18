@@ -1,0 +1,52 @@
+{% load static %}
+
+
+<section>
+    <small class="form-text text-muted">Choose a color</small>
+        <form id="form1" action="{% url 'demo' %}" class="" method="POST">
+            {% csrf_token %}
+            <div class="form-check form-check-inline">
+                <input class="form-check-input dataset" type="radio" name="dataset" id="dataset_a" value="green" checked>
+                <label class="form-check-label" for="green">
+                    Green
+                </label>
+            </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input dataset" type="radio" name="dataset" id="dataset_b" value="blue">
+                <label class="form-check-label" for="blue">
+                    Blue
+                </label>
+            </div>
+
+    <small class="form-text text-muted">Choose a number</small>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input dataset" type="radio" name="label" id="positive_class" value="3">
+            <label class="form-check-label" for="3">
+                3
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input dataset" type="radio" name="label" id="negative_class" value="5">
+            <label class="form-check-label" for="5">
+                5
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input dataset" type="radio" name="label" id="both_class" value="10" checked>
+            <label class="form-check-label" for="10">
+                10
+            </label>
+        </div>
+    </form>
+</section>
+
+  <div id="container" style="width: 75%;">
+    <canvas id="population-chart" data-url="{% url 'demo' %}">
+    </canvas>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="{% static 'scripts/barchart.js' %}"></script>
+<script src="{% static 'scripts/request.js' %}"></script>
+

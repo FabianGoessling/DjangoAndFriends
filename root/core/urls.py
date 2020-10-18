@@ -13,9 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import bokeh_app.bk_app as bokeh_app  # noqa
-import bokeh_app.bk_app_ipywidgets as ipyaggrid_app  # noqa
-import bokeh_app.pn_app as panel_app  # noqa
+import visualization_bokeh.bk_app as bokeh_app  # noqa
+import visualization_bokeh.bk_app_ipywidgets as ipyaggrid_app  # noqa
+import visualization_bokeh.pn_app as panel_app  # noqa
 
 from bokeh.server.django import autoload, static_extensions
 from django.apps import apps

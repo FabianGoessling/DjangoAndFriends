@@ -24,7 +24,16 @@ Django Apps:
 #### Dash
 
 #### Chart.js 
+The visualization_chartjs app shows a simple example of integrating
+[Chart.js](https://www.chartjs.org) in a Django app. Besides passing the initial data to the chart,
+the app shows how to implement an AJAX POST call to your Django view and
+return data to update the chart. Based on the example more complex callbacks can be easily constructed.
+Asides from standard Django code this examples requires basic javascript knowledge, but don't worry
+the code is straightforward and easy to understand.
+
+ 
 #### REST API
+
 #### GraphQL API
 #### datatables.net
 #### Database Visualization

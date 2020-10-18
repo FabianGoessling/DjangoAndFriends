@@ -105,8 +105,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'root.wsgi.application'
-ASGI_APPLICATION = 'root.routing.application'
+WSGI_APPLICATION = 'core.wsgi.application'
+ASGI_APPLICATION = 'core.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

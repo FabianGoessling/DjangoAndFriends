@@ -36,7 +36,11 @@ urlpatterns = [
     path('visualization_dash/', include('visualization_dash.urls')),
     path('visualization_bokeh/', include('visualization_bokeh.urls')),
     path('messaging/', include('messaging.urls')),
-    url('^django_plotly_dash/', include('django_plotly_dash.urls'))
+    url('^django_plotly_dash/', include('django_plotly_dash.urls')),
+    url(r'^docs/', include('sphinxdoc.urls')),
+    path('chat/', include('chat.urls')),
+    path('jexcel/', include('jexcel_crud.urls')),
+
 ]
 
 # Register bokeh apps here!
@@ -48,3 +52,5 @@ bokeh_apps = [
 
 urlpatterns += static_extensions()
 urlpatterns += staticfiles_urlpatterns()
+
+

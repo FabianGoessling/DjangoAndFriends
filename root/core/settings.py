@@ -33,7 +33,7 @@ SECRET_KEY = 'fh50i0(86cv176)g7stsfgik8!l7q*mr02a10dt#t-gl@y$@xk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Messages bootstrap style. REQUIREMENT for Bootstrap Style messages
 MESSAGE_TAGS = {
@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'visualization_dash.apps.Dash_appConfig',
     'visualization_bokeh.apps.BokehAppConfig',
     'visualization_chartjs.apps.ChartsConfig',
+    'chat',
+    'jexcel_crud.apps.JexcelCrudConfig',
 
     'django_extensions',
     'rest_framework',
@@ -60,6 +62,9 @@ INSTALLED_APPS = [
     'bokeh.server.django',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'graphene_django',
+    'sphinxdoc',
+    'haystack',
+    'crispy_forms',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,6 +77,12 @@ INSTALLED_APPS = [
 
 GRAPHENE = {
     'SCHEMA': 'api.schema.schema'  # Where your Graphene schema lives
+}
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
 }
 
 MIDDLEWARE = [
@@ -106,7 +117,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-ASGI_APPLICATION = 'core.routing.application'
+ASGI_APPLICATION = 'core.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

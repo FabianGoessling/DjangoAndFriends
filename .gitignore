@@ -1,4 +1,8 @@
 .idea
 /.idea/
 /.idea/inspectionProfiles/
+.vscode
+__pycache__/
+migrations
+*.pyc
 

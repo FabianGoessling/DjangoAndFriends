@@ -14,21 +14,16 @@ from django.core.asgi import get_asgi_application
 import chat.routing
 from django.apps import apps
 
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
 
 application = ProtocolTypeRouter({
-  "websocket": AuthMiddlewareStack(
+    "websocket": AuthMiddlewareStack(
         URLRouter(
             chat.routing.websocket_urlpatterns
         )
     ),
 })
 
-
-
-
-
-#TODO: Wie kommt das hier rein?
-#'websocket': AuthMiddlewareStack(URLRouter(bokeh_app_config.routes.get_websocket_urlpatterns())),
-  #  'http': AuthMiddlewareStack(URLRouter(bokeh_app_config.routes.get_http_urlpatterns())),
+# TODO: Wie kommt das hier rein?
+# 'websocket': AuthMiddlewareStack(URLRouter(bokeh_app_config.routes.get_websocket_urlpatterns())),
+#  'http': AuthMiddlewareStack(URLRouter(bokeh_app_config.routes.get_http_urlpatterns())),

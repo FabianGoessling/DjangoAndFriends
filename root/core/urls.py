@@ -30,6 +30,7 @@ pn_app_config = apps.get_app_config('bokeh.server.django')
 urlpatterns = [
     path('', include('home.urls')),
     path('charts/', include('visualization_chartjs.urls')),
+    path('django_formset_vuejs/', include('django_formset_vuejs.urls')),
     path('api/', include('api.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
@@ -39,7 +40,8 @@ urlpatterns = [
     url('^django_plotly_dash/', include('django_plotly_dash.urls')),
     url(r'^docs/', include('sphinxdoc.urls')),
     path('chat/', include('chat.urls')),
-    path('jexcel/', include('jexcel_crud.urls')),
+    path('crud/', include('crud.urls')),
+    path("unicorn/", include("django_unicorn.urls"))
 
 ]
 
@@ -52,5 +54,3 @@ bokeh_apps = [
 
 urlpatterns += static_extensions()
 urlpatterns += staticfiles_urlpatterns()
-
-

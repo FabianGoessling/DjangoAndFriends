@@ -2,9 +2,9 @@
 
 This repo contains examples for possible integrations of other
 python frameworks and general how-to-does for Django extension. 
-The repos is by means complete nor necessarily best-practice.
+The repos is by no means complete nor necessarily best-practice.
 Instead it evolves step by step as I dig deeper into the Django Framework.
-In particular the repo covers (or will cover):
+In particular the repo covers:
 
 ### bokeh & panel 
 Integration of [bokeh](https://docs.bokeh.org/en/latest/) and [panel](https://panel.holoviz.org)
@@ -16,9 +16,7 @@ Required Packages:
 * Django Channels
 
 Django Apps:
-* bokeh_app
-* panel_app
-* ipyaggrid_app
+* visualization_bokeh
 
 
 #### Dash
@@ -38,8 +36,10 @@ the code is straightforward and easy to understand.
 #### datatables.net
 #### Database Visualization
 #### Database signals
-Extends the User model with a Profile and auto-generates 
-Profile Instances on each save of a new User instance.
+Django signals allow to execute specific actions on model.save()
+and other methods. The example case is given in the home app, which
+extends the User model with a Profile and auto-generates 
+Profile instances on each save of a new User instance.
 #### Django Messaging Framework
 #### Prefect Integration
 #### Celery Integration
@@ -59,5 +59,11 @@ celery -A mysite beat -l info
 
 
 #### Bootstrap Templates
+
+
 #### Django Crispy Forms
+[Django crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) allow to specify Django form logic and templating inside the python code, i.e.
+it removes a lot of html code. The crud app shows an extended example of dynamic forms
+within a Django app, combining javascript, Django crispy forms, Django formsetfactories
+and dealing with foreign keys in forms.
 

@@ -1,0 +1,127 @@
+{% extends 'django_formset_vuejs/home.html' %}
+
+{% block title %}
+<h1>Django formsets with Vue.js</h1>
+{% endblock title %}
+{% block content %}
+{% for message in messages %}
+<div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+</div>
+{% endfor %}
+<div id="author-books">
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <!-- AUTHOR -->
+        <div v-for="(author, author_index) in authors.author_set">
+            <div class="form-group">
+                <h4>
+                    Author
+                </h4>
+                <div class="form-row">
+                    <div class="col">
+                        <label v-bind:for="author.id">First
+                            name:</label>
+                        <input type="text" v-bind:name="author.id"
+                            v-model="author.first_name"
+                            v-bind:id="author.id + author.first_name"
+                            class="form-control">
+                    </div>
+
+                    <div class="col">
+                        <label v-bind:for="author.id + author.last_name">Last
+                            name:</label>
+                        <input type="text" v-bind:name="author.id + author.last_name"
+                            v-model="author.last_name"
+                            v-bind:id="author.id + author.last_name"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK -->
+            <div class="row">
+                <div class ="col-3" v-for="(book, book_index) in authors.author_set[0].book_set">
+
+                    <div class="books-form ">
+                        <h5>
+                            Book
+                            <a href="" v-on:click="removeBook($event, 0, book_index)">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </h5>
+
+                        <div class="container">
+                          
+                                <div class="form-group">
+                                    <label
+                                        v-bind:for="'booktitle'">Title:</label>
+                                    <input type="text"
+                                        v-bind:name="'booktitle'"
+                                        v-model="book.title"
+                                        v-bind:id="'booktitle'"
+                                        class="form-control">
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label
+                                        v-bind:for="'bookisbn'">ISBN:</label>
+                                    <input type="text"
+                                        v-bind:name="'bookisbn'"
+                                        v-model="book.isbn"
+                                        v-bind:id="'bookisbn'"
+                                        class="form-control">
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="" v-on:click="addNewBook($event)" role="button"
+                    class="btn btn-outline-primary">Add New Book</a>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <button type="submit" value="Next" class="btn btn-primary btn-lg btn-block">Save</button>
+        </div>
+        <div>
+            [[authors]]
+        </div>
+    </form>
+</div>
+<script type="text/javascript"> 
+    var authors = {{authors|safe}}
+ </script>
+<script>
+    console.log(authors)
+
+    $(document).ready(function () {
+        console.log(authors)
+        const v = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#author-books',
+            data: {
+                authors: authors,
+            },
+            methods: {
+                addNewBook: function (event) {
+                    event.preventDefault();
+                    const default_new_book = {'title': '',
+                                            'isbn': ''};
+                    this.$data.authors.author_set[0].book_set.push(default_new_book);
+                },
+                removeBook: function (event, author_index, book_index) {
+                    event.preventDefault();
+                    Vue.delete(this.$data.authors.author_set[author_index].book_set, book_index);
+                },
+            }
+        });
+    });
+
+</script>
+{% endblock content %}

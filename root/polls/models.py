@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -14,6 +15,7 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
@@ -24,7 +26,6 @@ class Choice(models.Model):
 
 
 class Book(models.Model):
-
     name = models.CharField(max_length=255)
     isbn_number = models.CharField(max_length=13)
 
@@ -39,7 +40,6 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-
     name = models.CharField(max_length=255)
     book = models.ForeignKey(
         Book,

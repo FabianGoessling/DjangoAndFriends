@@ -34,3 +34,8 @@ def prefect_flow_run(request):
     c = Client()
     c.create_flow_run(flow_id="e41a168a-da69-4aef-8adf-699aef230e70")
     return render(request, 'home/message_page.html')
+
+
+def vuetest(request):
+    context = dict()
+    return render(request=request, context=context)

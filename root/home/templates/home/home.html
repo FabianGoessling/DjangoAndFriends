@@ -1,24 +1,28 @@
-{% extends "base.html" %}
-{% block content %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Card deck -->
-<div class="card-group">
-    {% for app in apps %}
-    <!-- Card -->
-    <div class="col-3">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ app.name }}</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tailwind CSS Skeleton</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
 
-</div>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
 
+<body class="bg-white font-serif leading-normal tracking-normal">
+  <div id="app">
 
-{% endblock %}
+  </div>
+
+  {% render_bundle 'chunk-vendors' %}
+  {% render_bundle 'helloworld' %}
+  {% render_bundle 'vue_app_01' %}
+</body>
+
+</html>

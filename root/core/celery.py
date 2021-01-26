@@ -24,10 +24,11 @@ app.conf.beat_schedule = {
     'add-every-30-seconds': {
         'task': 'home.tasks.some_task',
         'schedule': 10.0,
-        'args': (0),
+        'args': 0,
     },
 }
 app.conf.timezone = 'UTC'
+
 
 @app.task(bind=True)
 def debug_task(self):

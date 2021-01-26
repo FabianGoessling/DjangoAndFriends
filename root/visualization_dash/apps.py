@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-class Dash_appConfig(AppConfig):
+class DashAppConfig(AppConfig):
     name = 'visualization_dash'
-
-    description = ' ich bin eine dash app'
+    description = 'Eine Beispiel Dash App'

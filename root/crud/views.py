@@ -18,7 +18,7 @@ def jexcel_input(request):
         [type]: [description]
     """
     if request.method == "GET":
-        return render(request, "jexcel_crud/jexcel.html")
+        return render(request, "crud/jexcel_input.html")
     if request.method == "POST":
         response = {"0": ["MP", "AA"], "1": ["fffff", "bbb"]}
     return JsonResponse(response)
@@ -48,7 +48,7 @@ def dynamic_form(request):
 
         all_books = Book.objects.all()
         context["book_table"] = render_to_string(
-            "partials/table_partial.html", {"book_list": all_books}, request
+            "crud/partials/table_partial.html", {"book_list": all_books}, request
         )
         return JsonResponse(context)
     else:
@@ -56,6 +56,7 @@ def dynamic_form(request):
         context["form"] = BookForm(
             initial={"name": book.name, "value": book.value})
 
+        # fill the formset with existing sites
         context["siteset"] = site_set(extra=len(book.site_set.all()))(
             initial=[{"page": site.page} for site in book.site_set.all()]
         )

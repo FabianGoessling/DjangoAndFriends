@@ -44,20 +44,26 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+TAILWIND_APP_NAME = 'django_and_friends_theme'
+
 # Application definition
 INSTALLED_APPS = [
     'messaging.apps.MessagingAppConfig',
     'home.apps.HomeConfig',
     'polls.apps.PollsConfig',
     'api.apps.ApiExamplesConfig',
-    'visualization_dash.apps.Dash_appConfig',
+    'django_and_friends_theme.apps.DjangoAndFriendsThemeConfig',
+    'visualization_dash.apps.DashAppConfig',
     'visualization_bokeh.apps.BokehAppConfig',
     'visualization_chartjs.apps.ChartsConfig',
     'chat',
-    'jexcel_crud.apps.JexcelCrudConfig',
+    'crud.apps.CrudConfig',
+    'django_formset_vuejs.apps.DjangoFormsetVuejsConfig',
+    'unicorn',
 
     'django_extensions',
     'rest_framework',
+    'tailwind',
     'channels',
     'bokeh.server.django',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
@@ -65,6 +71,9 @@ INSTALLED_APPS = [
     'sphinxdoc',
     'haystack',
     'crispy_forms',
+    'django_unicorn',
+    'livereload',
+    'webpack_loader',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -74,6 +83,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 ]
+
+VUE_FRONTEND_DIR = os.path.join(BASE_DIR, 'vue_frontend')
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'vue/',  # must end with slash
+        'STATS_FILE': os.path.join(VUE_FRONTEND_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    }
+}
+
 
 GRAPHENE = {
     'SCHEMA': 'api.schema.schema'  # Where your Graphene schema lives
@@ -93,9 +116,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'django_plotly_dash.middleware.BaseMiddleware',
     'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -127,7 +150,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -196,7 +218,6 @@ STATIC_URL = '/static/'
 THEMES_DIR = join(MODULE_DIR, "themes")
 STATICFILES_DIRS = [bokehjsdir(),
                     os.path.join(BASE_DIR, "static")]
-
 
 # CELERY STUFF
 # BROKER_URL = 'django://'

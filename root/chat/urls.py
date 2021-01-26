@@ -7,6 +7,6 @@ urlpatterns = [
     path('<str:room_name>/', views.room, name='room'),
 ]
 
-import pandas as pd 
+import pandas as pd
 
 pd.DataFrame()

@@ -15,4 +15,4 @@ class Query(graphene.ObjectType):
         return User.objects.all()
 
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query) # noqa

@@ -1,0 +1,20 @@
+<table class="table" id="table_input">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in book_list %}
+        <tr>
+            <td>{{ book.name }}</td>
+            <td>{{ book.value }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="text-center bg-warning">No book</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

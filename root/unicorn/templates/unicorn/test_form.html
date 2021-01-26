@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div>
+    <div unicorn:model="books">
+        <div unicorn:pk=""><!-- A blank pk will create a new model when it is saved -->
+            <div>
+                <input unicorn:field.lazy="name" type="text" id="name">
+            </div>
+            <div>
+                <input unicorn:field.lazy="value" type="text" id="value" />
+            </div>
+        </div>
+
+        {% for book in books %}
+        <div unicorn:pk="{{ book.pk }}"><!-- Using the model's pk will save the model -->
+            <div>
+                <input unicorn:field.lazy="name" type="text">
+                {{ book.name }}
+            </div>
+            <div>
+                <input unicorn:field.lazy="value" type="text"  />
+                {{ book.value }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button unicorn:click="save">Save</button>
+</div>

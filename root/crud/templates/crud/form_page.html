@@ -1,0 +1,29 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<form id="myform" method="post" action="{% url 'forms' %}" class="js_form">
+    {% csrf_token %}
+    {% crispy form %}
+    {{ siteset.management_form }}
+    {% for form in siteset%}
+    <div class="row spacer form-row">
+        {% crispy form sitesetHelper%}
+    </div>
+    {% endfor %}
+    <div class="row spacer">
+        <div class="input-group-append">
+            <button class="btn btn-success add-form-row">+</button>
+        </div>
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-block btn-primary">Create</button>
+        </div>
+
+    </div>
+</form>
+
+<div id="table_input">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="{% static 'scripts/dynamic_form.js' %}"></script>

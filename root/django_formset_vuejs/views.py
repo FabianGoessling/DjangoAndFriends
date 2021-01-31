@@ -7,6 +7,9 @@ from . import serializers
 import json
 
 
+def rest_get_request(request):
+    return render(request, 'django_formset_vuejs/api_call.html')
+
 def author_books_formset(request):
     # Get the current user
     user = request.user
@@ -19,8 +22,11 @@ def author_books_formset(request):
         request.session.save()
 
     # load the author container object
-    author = get_object_or_404(
-        models.AuthorContainer, id=request.session['author_id'])
+    author =  None# models.AuthorContainer.objects.get(id=request.session['author_id'])
+
+    if author is None:
+        author = models.AuthorContainer()
+
 
     if request.method == 'POST':
         formset = forms.AuthorsFormset(request.POST or None,
@@ -50,12 +56,5 @@ def author_books_formset(request):
         'parent': author,
         'authors': json.dumps(ts.data)})
 
-def serialize_form(formset):
-    fields = formset[0].fields
-    out = []
-    for frm in formset:
-        data = {}
-        for fld in fields:
-            data[fld] = frm.fld
         
 

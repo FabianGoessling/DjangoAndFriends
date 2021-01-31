@@ -1,0 +1,46 @@
+{% extends 'django_formset_vuejs/home.html' %}
+
+{% block title %}
+<h1>REST request with vue.js</h1>
+{% endblock title %}
+
+{% block content %}
+<div id='bitcoin'>
+    <v-app>
+        <div>
+            [[info]]
+        </div>
+        <v-card   elevation="2">
+            <h1>Bitcoin Price Index</h1>
+            <div
+              v-for="currency in info"
+              class="currency"
+            >
+              [[ currency.description ]]:
+              <span class="lighten">
+                <span v-html="currency.symbol"></span>[[ currency.rate_float | currencydecimal ]]
+              </span>
+            </div>
+    </v-card>
+</v-app>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        const v = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#bitcoin',
+            data: {
+                info: "",
+            },
+            mounted () {
+                        axios
+                        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                        .then(response => (this.info = response.data.bpi))
+                    }
+        });
+    });
+
+</script>
+{% endblock content %}

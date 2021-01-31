@@ -6,6 +6,9 @@ The repos is by no means complete nor necessarily best-practice.
 Instead it evolves step by step as I dig deeper into the Django Framework.
 In particular the repo covers:
 
+
+### Vue.js & Django
+Based on (https://medium.com/js-dojo/vue-django-best-of-both-frontends-701307871478)
 ### bokeh & panel 
 Integration of [bokeh](https://docs.bokeh.org/en/latest/) and [panel](https://panel.holoviz.org)
 is straightforward given the respective documentation. In particular, the panel package

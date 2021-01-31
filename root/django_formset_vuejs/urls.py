@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.author_books_formset, name='author'),
+    path('form_with_vue', views.author_books_formset, name='form_with_vue'),
+    path('rest_get_request', views.rest_get_request, name='rest_get_request'),
 ]

@@ -4,74 +4,9 @@
 <h1>Django formsets with Vue.js</h1>
 {% endblock title %}
 {% block content %}
-{% for message in messages %}
-<div class="alert {{ message.tags }} alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    {{ message }}
-</div>
-{% endfor %}
-
-<div>
-    <form enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        <!-- AUTHOR -->
-        <div v-for="(author, author_index) in authors.author_set">
-            <h4>
-                Author
-            </h4>
-
-            <v-text-field v-bind:name="author.id" v-model="author.first_name" v-bind:id="author.id + author.first_name">
-            </v-text-field>
-
-            <v-text-field v-bind:name="author.id + author.last_name" v-model="author.last_name"
-                v-bind:id="author.id + author.last_name" class="form-control">
-            </v-text-field>
 
 
 
-            <!-- BOOK -->
-            <div v-for="(book, book_index) in authors.author_set[0].book_set">
-                <transition appear name="slide-fade">
-                    <v-card>
-                        <v-card-title class="gray">
-                            Book
-                            <a href="" v-on:click="removeBook($event, 0, book_index)">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </v-card-title>
-                        <v-card-text>
-                            <v-text-field v-bind:name="'booktitle'" v-model="book.title" v-bind:id="'booktitle'"
-                                label="Titel">
-                            </v-text-field>
-
-                            <v-text-field type="text" v-bind:name="'bookisbn'" v-model="book.isbn"
-                                v-bind:id="'bookisbn'" label="ISBN">
-                            </v-text-field>
-                        </v-card-text>
-                    </v-card>
-                </transition>
-            </div>
-
-        </div>
-        <v-spacer></v-spacer>
-        <v-btn v-on:click="addNewBook($event)" color="primary">
-            <v-icon left>
-                mdi-plus
-            </v-icon> Add new Book
-        </v-btn>
-        <v-btn color="primary">
-            <v-icon left>
-                mdi-cloud
-            </v-icon> Save
-        </v-btn>
-    </form>
-</div>
-
-
-<button-counter></button-counter>
-<bitcoin-price></bitcoin-price>
 
 {% endblock content %}
 

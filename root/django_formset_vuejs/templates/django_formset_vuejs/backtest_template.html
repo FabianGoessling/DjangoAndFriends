@@ -4,18 +4,127 @@
 <h1>Django formsets with Vue.js</h1>
 {% endblock title %}
 {% block content %}
+<v-card>
+    <v-container>
+        <v-row align="center" justify="center">
+            <v-col>
+                <v-card-text>
+                    <v-text-field label="Name">
+                    </v-text-field>
+            </v-col>
 
+            <v-col>
+                <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="startdatum"
+                    transition="scale-transition" offset-y min-width="auto">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-text-field v-model="startdatum" label="Startdatum" prepend-icon="mdi-calendar" readonly
+                            v-bind="attrs" v-on="on"></v-text-field>
+                    </template>
+                    <v-date-picker v-model="startdatum" no-title scrollable>
+                        <v-spacer></v-spacer>
+                        <v-btn text color="primary" @click="menu = false">
+                            Cancel
+                        </v-btn>
+                        <v-btn text color="primary" @click="$refs.menu.save(startdatum)">
+                            OK
+                        </v-btn>
+                    </v-date-picker>
+                </v-menu>
+            </v-col>
+
+            <v-col>
+                <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" :return-value.sync="enddatum"
+                    transition="scale-transition" offset-y min-width="auto">
+
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-text-field v-model="enddatum" label="Endatum" prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                            v-on="on"></v-text-field>
+                    </template>
+
+                    <v-date-picker v-model="enddatum" no-title scrollable>
+                        <v-spacer></v-spacer>
+                        <v-btn text color="primary" @click="menu2 = false">
+                            Cancel
+                        </v-btn>
+                        <v-btn text color="primary" @click="$refs.menu2.save(enddatum)">
+                            OK
+                        </v-btn>
+                    </v-date-picker>
+
+                </v-menu>
+            </v-col>
+        </v-row>
+    </v-container>
+
+    <v-row class="mt-6">
+        <v-col>
+            
+                <v-tabs vertical>
+                  <v-tab>
+                    <v-icon left>
+                      mdi-account
+                    </v-icon>
+                    Option 1
+                  </v-tab>
+                  <v-tab>
+                    <v-icon left>
+                      mdi-lock
+                    </v-icon>
+                    Option 2
+                  </v-tab>
+                  <v-tab>
+                    <v-icon left>
+                      mdi-access-point
+                    </v-icon>
+                    Option 3
+                  </v-tab>
+                  <v-btn class="ml-1">
+                    <v-icon left>
+                      mdi-plus
+                    </v-icon>
+                    New backtest
+                  </v-btn>
+            
+                  <v-tab-item>
+                    <v-card flat>
+                      <v-card-text>
+                        C
+                      </v-card-text>
+                    </v-card>
+                  </v-tab-item>
+                  <v-tab-item>
+                    <v-card flat>
+                      <v-card-text>
+                          A
+                      </v-card-text>
+                    </v-card>
+                  </v-tab-item>
+                  <v-tab-item>
+                    <v-card flat>
+                      <v-card-text>
+                          B
+                      </v-card-text>
+                    </v-card>
+                  </v-tab-item>
+                </v-tabs>
+        </v-col>
+    </v-row>
+
+
+    </v-card-text>
+
+</v-card>
 
 
 
 {% endblock content %}
 
 {% block scripts %}
-
 <script type="text/javascript">
-    var authors = {{ authors| safe}}
+    var authors = 1
     console.log(authors)
 </script>
+
 
 
 
@@ -85,6 +194,8 @@
     })
 
 </script>
+
+
 
 {{block.super}}
 {% endblock scripts %}

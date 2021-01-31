@@ -1,5 +1,7 @@
 <template>
-
+<v-card>
+  AA
+</v-card>
 </template>
 
 <script>

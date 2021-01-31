@@ -7,6 +7,10 @@ from . import serializers
 import json
 
 
+def bt(request):
+    return render(request, 'django_formset_vuejs/backtest_template.html')
+
+
 def rest_get_request(request):
     return render(request, 'django_formset_vuejs/api_call.html')
 

@@ -128,7 +128,19 @@
         { title: 'Home', icon: 'mdi-home-city' },
         { title: 'My Account', icon: 'mdi-account' },
         { title: 'Users', icon: 'mdi-account-group-outline' },
-      ]
+      ],
+      model: 0,
+      menu: false,
+      menu2: false,
+      enddatum:new Date().toISOString().substr(0, 10),
+      startdatum:new Date().toISOString().substr(0, 10),
+    colors: [
+      'primary',
+      'secondary',
+      'yellow darken-2',
+      'red',
+      'orange',
+    ],
             },
             methods: {
                 addNewBook: function (event) {

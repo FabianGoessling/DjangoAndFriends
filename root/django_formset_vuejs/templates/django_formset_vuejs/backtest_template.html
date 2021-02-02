@@ -5,15 +5,17 @@
 {% endblock title %}
 {% block content %}
 <v-card>
-    <v-container>
-        <v-row align="center" justify="center">
-            <v-col>
+    <v-card-text>
+        <v-row>
+            <v-col cols=12
+            sm=12
+            md=12
+            lg=2>
                 <v-card-text>
                     <v-text-field label="Name">
                     </v-text-field>
-            </v-col>
 
-            <v-col>
+
                 <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="startdatum"
                     transition="scale-transition" offset-y min-width="auto">
                     <template v-slot:activator="{ on, attrs }">
@@ -30,15 +32,13 @@
                         </v-btn>
                     </v-date-picker>
                 </v-menu>
-            </v-col>
 
-            <v-col>
                 <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" :return-value.sync="enddatum"
                     transition="scale-transition" offset-y min-width="auto">
 
                     <template v-slot:activator="{ on, attrs }">
-                        <v-text-field v-model="enddatum" label="Endatum" prepend-icon="mdi-calendar" readonly v-bind="attrs"
-                            v-on="on"></v-text-field>
+                        <v-text-field v-model="enddatum" label="Endatum" prepend-icon="mdi-calendar" readonly
+                            v-bind="attrs" v-on="on"></v-text-field>
                     </template>
 
                     <v-date-picker v-model="enddatum" no-title scrollable>
@@ -52,71 +52,117 @@
                     </v-date-picker>
 
                 </v-menu>
+           
+
+
+
+               
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                <v-btn class="mx-2 my-2" fab dark small color="pink"   v-bind="attrs"
+                v-on="on">
+                    <v-icon dark>
+                        mdi-chart-line-variant
+                    </v-icon>
+                </v-btn>
+            </template>
+            <span>Add an asset</span>
+        </v-tooltip>
+
+
+
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn class="mx-2 my-2" fab dark small color="green"   v-bind="attrs"
+                        v-on="on">
+                            <v-icon dark>
+                                mdi-chart-arc
+                            </v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Add a backtest</span>
+                </v-tooltip>
+
+
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                <v-btn class="mx-2 my-2" fab dark small color="gray"   v-bind="attrs"
+                v-on="on">
+                    <v-icon dark>
+                        mdi-check
+                    </v-icon>
+                </v-btn>
+            </template>
+            <span>Calculate the backtest results</span>
+        </v-tooltip>
+
+
+            </v-col> 
+            <v-divider vertical>  </v-divider>
+            <v-col>
+
+                <v-tabs grow class="mt-n4">
+                    <v-tab>
+                        <v-icon left>
+                            mdi-account
+                        </v-icon>
+                        Option 1
+                    </v-tab>
+                    <v-tab>
+                        <v-icon left>
+                            mdi-lock
+                        </v-icon>
+                        Option 2
+                    </v-tab>
+                    <v-tab>
+                        <v-icon left>
+                            mdi-access-point
+                        </v-icon>
+                        Option 3
+                    </v-tab>
+                
+
+
+                    <v-tab-item>
+                        <v-card flat>
+                            <v-card-text>
+                                C
+                            </v-card-text>
+                        </v-card>
+                    </v-tab-item>
+                    <v-tab-item>
+                        <v-card flat>
+                            <v-card-text>
+                                A
+                            </v-card-text>
+                        </v-card>
+                    </v-tab-item>
+                    <v-tab-item>
+                        <v-card flat>
+                            <v-card-text>
+                                B
+                            </v-card-text>
+                        </v-card>
+                    </v-tab-item>
+                </v-tabs>
             </v-col>
         </v-row>
-    </v-container>
 
-    <v-row class="mt-6">
-        <v-col>
-            
-                <v-tabs vertical>
-                  <v-tab>
-                    <v-icon left>
-                      mdi-account
-                    </v-icon>
-                    Option 1
-                  </v-tab>
-                  <v-tab>
-                    <v-icon left>
-                      mdi-lock
-                    </v-icon>
-                    Option 2
-                  </v-tab>
-                  <v-tab>
-                    <v-icon left>
-                      mdi-access-point
-                    </v-icon>
-                    Option 3
-                  </v-tab>
-                  <v-btn class="ml-1">
-                    <v-icon left>
-                      mdi-plus
-                    </v-icon>
-                    New backtest
-                  </v-btn>
-            
-                  <v-tab-item>
-                    <v-card flat>
-                      <v-card-text>
-                        C
-                      </v-card-text>
-                    </v-card>
-                  </v-tab-item>
-                  <v-tab-item>
-                    <v-card flat>
-                      <v-card-text>
-                          A
-                      </v-card-text>
-                    </v-card>
-                  </v-tab-item>
-                  <v-tab-item>
-                    <v-card flat>
-                      <v-card-text>
-                          B
-                      </v-card-text>
-                    </v-card>
-                  </v-tab-item>
-                </v-tabs>
-        </v-col>
-    </v-row>
 
-    <v-progress-circular
-    indeterminate
-    color="primary"
-  ></v-progress-circular>
-  
     </v-card-text>
 
+</v-card>
+<v-card class="mt-2">
+    <v-card-title> Results </v-card-title>
+    <v-progress-linear
+      color="primary"
+      indeterminate
+      absolute
+      rounded
+      height="2"
+    ></v-progress-linear>
+    <v-card-text align="center" justify="center">
+    </v-card-text>
 </v-card>
 
 

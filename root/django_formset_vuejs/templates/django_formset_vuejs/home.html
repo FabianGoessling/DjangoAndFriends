@@ -67,7 +67,6 @@
 <body>
   <div id="app">
     <v-app>
-
       <v-navigation-drawer v-model="drawer" left app width=200>
 
         <template v-slot:prepend>
@@ -118,12 +117,12 @@
         <!--  -->
       </v-navigation-drawer>
 
-
       <v-app-bar color="primary" dense elevate-on-scroll app>
         <v-app-bar-nav-icon color="white" @click="drawer = !drawer">
         </v-app-bar-nav-icon>
         <v-spacer></v-spacer>
       </v-app-bar>
+
       <v-main>
         <v-container>
           {% block content %}

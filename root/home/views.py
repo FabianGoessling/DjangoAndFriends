@@ -9,7 +9,7 @@ from .models import User
 
 
 def home(request):
-    return render(request, "home/home.html", {'apps': apps.get_app_configs()})
+    return render(request, "home/index.html", {'apps': apps.get_app_configs()})
 
 
 def prefect_flow(request):

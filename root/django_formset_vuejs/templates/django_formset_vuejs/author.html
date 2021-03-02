@@ -1,4 +1,6 @@
 {% extends 'django_formset_vuejs/home.html' %}
+{% load static %}
+
 
 {% block title %}
 <h1>Django formsets with Vue.js</h1>
@@ -69,9 +71,8 @@
     </form>
 </div>
 
-
-<button-counter></button-counter>
-<bitcoin-price></bitcoin-price>
+<my-component></my-component>
+<bitcoin-price componentinput='AHA'></bitcoin-price>
 
 {% endblock content %}
 
@@ -114,6 +115,7 @@
 <script>
     Vue.component('bitcoin-price', {
         delimiters: ['[[', ']]'],
+        props: ['componentinput'],
         data: function () {
             return {
                 info: "",
@@ -123,6 +125,8 @@
             axios
                 .get('https://api.coindesk.com/v1/bpi/currentprice.json')
                 .then(response => (this.info = response.data.bpi))
+            
+            console.log(this.componentinput)
         },
         template: `<div> 
                     <h1>Bitcoin Price Index</h1>
@@ -130,7 +134,7 @@
                         v-for="currency in info"
                         class="currency"
                     >
-                        [[ currency.description ]]:
+                        [[ componentinput ]]:
                         <span class="lighten">
                         <span v-html="currency.symbol"></span>[[ currency.rate_float ]]
                         </span>
@@ -146,8 +150,7 @@
                 count: 0
             }
         },
-        template: '<v-slider>min=10 max=14 </v-slider>'
-    })
+        template: `A`    })
 
 </script>
 

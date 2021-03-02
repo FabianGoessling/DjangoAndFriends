@@ -39,7 +39,7 @@ def app(doc):
              keep_multiindex=False)
 
     # doc = curdoc()
-    doc.add_root(row(IPyWidget(widget=g, height=200, width=800)))
+    doc.add_root(row([IPyWidget(widget=g)], sizing_mode="stretch_both"))
 
 # if __name__ == "__main__":
 # doc = curdoc()

@@ -18,4 +18,5 @@ def example(request: HttpRequest) -> object:
 
     """
     script = server_document(request.build_absolute_uri())
+    script = script.replace("<script ", "<script type='application/javascript' ")
     return render(request, "visualization_bokeh/embed.html", dict(script=script))

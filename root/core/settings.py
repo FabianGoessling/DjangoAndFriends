@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'chat',
     'crud.apps.CrudConfig',
     'django_formset_vuejs.apps.DjangoFormsetVuejsConfig',
-    'unicorn',
 
     'django_extensions',
     'rest_framework',
@@ -71,9 +70,6 @@ INSTALLED_APPS = [
     'sphinxdoc',
     'haystack',
     'crispy_forms',
-    'django_unicorn',
-    'livereload',
-    'webpack_loader',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,19 +79,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 ]
-
-VUE_FRONTEND_DIR = os.path.join(BASE_DIR, 'vue_frontend')
-
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'vue/',  # must end with slash
-        'STATS_FILE': os.path.join(VUE_FRONTEND_DIR, 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
-    }
-}
 
 
 GRAPHENE = {
@@ -118,7 +101,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_plotly_dash.middleware.BaseMiddleware',
     'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
-    'livereload.middleware.LiveReloadScript',
+  #  'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -142,14 +125,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 ASGI_APPLICATION = 'core.asgi.application'
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
+#CHANNEL_LAYERS = {
+#    'default': {
+#        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#        'CONFIG': {
+#            "hosts": [('127.0.0.1', 6379)],
+#        },
+#    },
+#}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

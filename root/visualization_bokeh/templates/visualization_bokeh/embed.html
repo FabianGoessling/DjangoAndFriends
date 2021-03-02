@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<v-card elevation=2>
+
+<v-card-title>
+    Bokeh Integration
+</v-card-title>
+<v-card-subtitle>
+    Simple bokeh app
+</v-card-subtitle>
+    <v-card-text>
+<div id="mydiv">
+    {{ script|safe }}
+</div></v-card-text>
+</v-card>
+{% endblock %}

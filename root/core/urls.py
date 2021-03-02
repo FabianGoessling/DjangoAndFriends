@@ -15,7 +15,7 @@ Including another URLconf
 """
 import visualization_bokeh.bk_app as bokeh_app  # noqa
 import visualization_bokeh.bk_app_ipywidgets as ipyaggrid_app  # noqa
-import visualization_bokeh.pn_app as panel_app  # noqa
+#import visualization_bokeh.pn_app as panel_app  # noqa
 
 from bokeh.server.django import autoload, static_extensions
 from django.apps import apps
@@ -47,9 +47,9 @@ urlpatterns = [
 
 # Register bokeh apps here!
 bokeh_apps = [
-    autoload("visualization_bokeh/vanilla", bokeh_app.app),
+    autoload("visualization_bokeh", bokeh_app.app),
     autoload("visualization_bokeh/ipywidget", ipyaggrid_app.app),
-    autoload("visualization_bokeh/panel", panel_app.app)
+  #  autoload("visualization_bokeh/panel", panel_app.app)
 ]
 
 urlpatterns += static_extensions()

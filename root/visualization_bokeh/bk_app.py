@@ -38,7 +38,7 @@ def app(doc):
     bk_y.on_change("value", change_bk_y)
     bk_z.on_change("value", change_bk_z)
 
-    bk_hbox = row([bk_vbox, bk_plot])
+    bk_hbox = row([bk_vbox, bk_plot], sizing_mode="stretch_both")
 
     # doc = curdoc()
     doc.add_root(bk_hbox)

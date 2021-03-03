@@ -1,6 +1,6 @@
 # Django & Friends
 
-![](/djangoandfriends.png)
+<a href="djangoandfriends.png"><img align="right" width="500" src="djangoandfriends.png"></a>
 
 This repo contains examples for integrating other frameworks or python packages. 
 By no means is the repo complete or necessarily best-practice, instead it represents a diary of my exploration of *Django & Friends*.

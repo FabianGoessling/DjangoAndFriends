@@ -101,7 +101,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_plotly_dash.middleware.BaseMiddleware',
     'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
-  #  'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -109,7 +108,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

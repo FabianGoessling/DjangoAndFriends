@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ title }}
-    <v-btn color="red" dark>
+    <v-btn color="success" dark>
       <v-icon> mdi-check </v-icon>
     </v-btn>
     {{ msg }}

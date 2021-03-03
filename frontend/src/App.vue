@@ -9,6 +9,9 @@
   <HelloWorld title="Title 3" msg="AHa" >
   </HelloWorld>
   
+    <HelloWorld title="Gisela" msg="Hallo" >
+  </HelloWorld>
+
    <v-card
       class="mx-auto"
       max-width="344"

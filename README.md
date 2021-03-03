@@ -1,15 +1,24 @@
 # Django & Friends
 
-This repo contains examples for possible integrations of other
-python frameworks and general how-to-does for Django extension. 
-The repos is by no means complete nor necessarily best-practice.
-Instead it evolves step by step as I dig deeper into the Django Framework.
+![](/djangoandfriends.png)
+
+This repo contains examples for integrating other frameworks or python packages. 
+By no means is the repo complete or necessarily best-practice, instead it represents a diary of my exploration of *Django & Friends*.
+
 In particular the repo covers:
 
 
-### Vue.js & Django
-Based on (https://medium.com/js-dojo/vue-django-best-of-both-frontends-701307871478)
+### Vue.js
+---
+There are several ways to use a fully fledged frontend js library like Vue.js with Django. 
+1) Separate frontend and backend. This is the go-to-way for large applications, but requires rewriting the Django Part to a REST API. Thus the django templating system cannot be used anymore.
+
+2) Integrating a standalone vue frontend in Django templates. This approach allows to use single-file-components (SFC) for the vue side while still using Djangos views. A commonly used package is django-webpack-loader which is not maintained and adds additional dependencies. Thus, a better way of integrating vue.js is to use Djangos template system to integrate the vue cli output. A full description is given in the repo (https://github.com/EugeneDae/django-vue-cli-webpack-demo). This approach is applied to the Django&Friends repo in the folder *frontend*.
+
+3) Integrate vue.js via CDN. This approach does not allow to use SFC and thus has to rely on Django template splitting. From my experience this can be a first step for using vue.js but is hardly maintainable. A simple example is given in the app
+
 ### bokeh & panel 
+---
 Integration of [bokeh](https://docs.bokeh.org/en/latest/) and [panel](https://panel.holoviz.org)
 is straightforward given the respective documentation. In particular, the panel package
 provides a nice [example](https://panel.holoviz.org/user_guide/Django_Apps.html).
@@ -23,8 +32,10 @@ Django Apps:
 
 
 #### Dash
+---
 
 #### Chart.js 
+---
 The visualization_chartjs app shows a simple example of integrating
 [Chart.js](https://www.chartjs.org) in a Django app. Besides passing the initial data to the chart,
 the app shows how to implement an AJAX POST call to your Django view and
@@ -34,15 +45,26 @@ the code is straightforward and easy to understand.
 
  
 #### REST API
+---
 
 #### GraphQL API
+---
+
+
 #### datatables.net
+---
+
 #### Database Visualization
+---
+
 #### Database signals
+---
 Django signals allow to execute specific actions on model.save()
 and other methods. The example case is given in the home app, which
 extends the User model with a Profile and auto-generates 
 Profile instances on each save of a new User instance.
+
+
 #### Django Messaging Framework
 #### Prefect Integration
 #### Celery Integration

@@ -14,7 +14,7 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     path('REST/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    #path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path('graphql/', views.graphiql),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    #path('graphql/', views.graphiql),
     path('test_subscription', views.test_subscription)
 ]

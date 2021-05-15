@@ -1,13 +1,14 @@
-import graphene
-from graphene import relay, ObjectType
-from graphene_django import DjangoObjectType
-from graphene_django.filter import DjangoFilterConnectionField
 import channels_graphql_ws
-from .models import Category, Ingredient
 import graphene
+from graphene import ObjectType, relay
+from graphene_django import DjangoObjectType
+from graphene_django.filter import DjangoFilterConnectionField  # noqa
 
-# Graphene will automatically map the Category model's fields onto the CategoryNode.
-# This is configured in the CategoryNode's Meta class (as you can see below)
+from .models import Category, Ingredient
+
+# Graphene will automatically map the Category model's fields onto the
+# CategoryNode. This is configured in the CategoryNode's Meta class 
+# (as you can see below)
 
 
 class CategoryNode(DjangoObjectType):

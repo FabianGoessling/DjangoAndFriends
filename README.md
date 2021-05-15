@@ -49,7 +49,9 @@ the code is straightforward and easy to understand.
 
 #### GraphQL API
 ---
+The GraphQL API examples lives in the "api" app besides the REST API example. Packages in use are [graphene](https://graphene-python.org) for setting up a simple GraphQL API and [channels_graphql_ws](https://github.com/datadvance/DjangoChannelsGraphqlWs) for adding subscriptions to the API Endpoint.
 
+Whereas setting up Query and Mutation request is very easy, following the graphene documentation, the Subscription via Websockets is a bit more involved. A very nice example can be found [here](https://github.com/williammorgan/graphqlsubscriptionexample). The Django & Friends Repo follows the same approach, but with the Ingredient/Category models from the [graphene documentation](https://docs.graphene-python.org/projects/django/en/latest/)
 
 #### datatables.net
 ---

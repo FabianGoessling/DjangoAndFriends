@@ -1,15 +1,12 @@
-from .schema import schema
 import random
-from .models import Category, Ingredient
-from django.contrib.auth.models import User, Group
-from django.http.request import HttpRequest
-from rest_framework import permissions
-from rest_framework import viewsets
 
-from .serializers import UserSerializer, GroupSerializer
-from django.shortcuts import render
-
+from django.contrib.auth.models import Group, User
 from django.http.response import HttpResponse
+from rest_framework import permissions, viewsets
+
+from .models import Category, Ingredient
+from .schema import schema
+from .serializers import GroupSerializer, UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -30,12 +27,12 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-def graphiql(request):
-    """Trivial view to serve the `graphiql.html` file."""
-    return render(request, 'api/graphiql.html')
+# def graphiql(request):
+#     """Trivial view to serve the `graphiql.html` file."""
+#     return render(request, 'api/graphiql.html')
 
 
-def test_subscription(request) -> HttpRequest:
+def test_subscription(request) -> HttpResponse:
     """Test the subscription part of the graphQL API
 
     Args:

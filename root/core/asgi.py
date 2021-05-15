@@ -25,7 +25,7 @@ application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
         URLRouter(
           #bokeh_app_config.routes.get_websocket_urlpatterns()
-          [path("graphql/", MyGraphqlWsConsumer.as_asgi())]
+          [path("api/graphql/", MyGraphqlWsConsumer.as_asgi())]
         ),
     ),
     'http': AuthMiddlewareStack(URLRouter(

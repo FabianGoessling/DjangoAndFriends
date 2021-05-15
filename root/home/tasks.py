@@ -4,5 +4,6 @@ from celery import shared_task
 
 
 @shared_task
-def some_task():
+def some_task(): 
+    """ A function that runs a task . """
     print('Hello')

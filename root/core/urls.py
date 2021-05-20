@@ -38,7 +38,7 @@ urlpatterns = [
     path('visualization_bokeh/', include('visualization_bokeh.urls')),
     path('messaging/', include('messaging.urls')),
     url('^django_plotly_dash/', include('django_plotly_dash.urls')),
-    url(r'^docs/', include('sphinxdoc.urls')),
+   # url(r'^docs/', include('sphinxdoc.urls')),
     path('chat/', include('chat.urls')),
     path('crud/', include('crud.urls')),
     path("unicorn/", include("django_unicorn.urls"))

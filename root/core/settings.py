@@ -67,7 +67,8 @@ INSTALLED_APPS = [
     'bokeh.server.django',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'graphene_django',
-    'sphinxdoc',
+
+    #'sphinxdoc',
     'haystack',
     'crispy_forms',
     'django_filters',

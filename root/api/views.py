@@ -1,7 +1,8 @@
 import random
 
 from django.contrib.auth.models import Group, User
-from django.http.response import HttpResponse
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render
 from rest_framework import permissions, viewsets
 
 from .models import Category, Ingredient
@@ -27,11 +28,6 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-# def graphiql(request):
-#     """Trivial view to serve the `graphiql.html` file."""
-#     return render(request, 'api/graphiql.html')
-
-
 def test_subscription(request) -> HttpResponse:
     """Test the subscription part of the graphQL API
 
@@ -47,3 +43,9 @@ def test_subscription(request) -> HttpResponse:
     schema.MySubscription.broadcast(group="group42",
                                     payload=ingredient_)
     return HttpResponse()
+
+
+def graphql_example(request: HttpRequest) -> HttpResponse:
+    """Load the graphql example page
+    """
+    return render(request, template_name="api/graphQL_example.html")

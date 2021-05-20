@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+    <script src=https://cdn.jsdelivr.net/npm/vue-apollo@3.0.7/dist/vue-apollo.umd.min.js></script>
+    <title>GraphQL in a Vue component in a Django page</title>
+  </head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-card>
+        <v-card-title>
+          GraphQL Subscriptions
+        </v-card-title>
+        <v-card-subtitle>
+          Graphene and Websockets via Channels
+        </v-card-subtitle>
+        <v-divider>
+
+        </v-divider>
+        <v-card-text>
+          <p>The data below is saved in the app database and loaded on startup:</p>
+          [[ datas ]]
+        </v-card-text>
+      </v-card>
+    </v-app>
+  </div>
+</body>
+
+{% block scripts %}
+
+<script>
+
+
+  const v = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#app',
+    vuetify: new Vuetify(),
+    data: {
+      datas: 'Initial data'
+    },
+    created() {
+      axios({
+        url: 'graphql/',
+        method: 'post',
+        data: {
+          query: `subscription {
+                    testSubscription {
+                      ingredient {
+                        name
+                      }
+                    }
+                  }`,
+        }
+      })
+        .then(response => (this.datas = response.data))
+    },
+    methods: {
+    }
+  });
+
+</script>
+{% endblock scripts %}
+
+
+</html>

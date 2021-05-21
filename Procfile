@@ -1,1 +1,1 @@
-web: daphne --chdir root core.asgi:application
+web: daphne --root-path root core.asgi:application

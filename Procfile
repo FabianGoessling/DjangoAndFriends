@@ -1,1 +1,1 @@
-web: gunicorn --chdir root core.wsgi
+web: daphne --chdir root core.asgi:application

@@ -1,1 +1,1 @@
-web: daphne --root-path root core.asgi:application
+web: daphne core.asgi:application

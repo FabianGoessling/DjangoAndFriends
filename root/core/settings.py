@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from os.path import abspath, dirname, join
 from pathlib import Path
-#import django_heroku
+import django_heroku
 from bokeh.settings import bokehjsdir  # noqa
 from django.contrib.messages import constants as message_constants
 from django.contrib.messages import constants as messages
@@ -209,4 +209,4 @@ STATICFILES_DIRS = [bokehjsdir(),
 # CELERY_TIMEZONE = 'Africa/Nairobi'
 
 # Activate Django-Heroku.
-#django_heroku.settings(locals())
+django_heroku.settings(locals())

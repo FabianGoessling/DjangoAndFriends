@@ -1,1 +1,1 @@
-web: daphne core.asgi:application
+web: cd root && daphne core.asgi:application

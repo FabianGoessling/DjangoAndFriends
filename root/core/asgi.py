@@ -12,14 +12,15 @@ from api.schema import MyGraphqlWsConsumer
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from chat.consumers import ChatConsumer
-#import chat.routing
+
 from django.apps import apps
 from django.core.asgi import get_asgi_application
 from django.urls import path, re_path
 
-bokeh_app_config = apps.get_app_config('bokeh.server.django')
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
+django_asgi_app = get_asgi_application()
+bokeh_app_config = apps.get_app_config('bokeh.server.django')
 
 application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
@@ -31,7 +32,7 @@ application = ProtocolTypeRouter({
         ),
     ),
     'http': AuthMiddlewareStack(URLRouter(
-        [re_path(r"", get_asgi_application())]))  # bokeh_app_config.routes.get_http_urlpatterns())),
+        [re_path(r"", django_asgi_app)]))  # bokeh_app_config.routes.get_http_urlpatterns())),
 })
 
 # import os

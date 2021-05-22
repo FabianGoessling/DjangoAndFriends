@@ -8,22 +8,22 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 """
 import os
 
-import django
-from channels.routing import get_default_application
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
-#django.setup()
+
 from django.core.asgi import get_asgi_application
+django_asgi = get_asgi_application()
+
+from channels.routing import get_default_application
 from django.urls import path, re_path
-django_asgi_app = get_asgi_application()
-
-
 #from api.schema import MyGraphqlWsConsumer
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from chat.consumers import ChatConsumer
 from django.apps import apps
 
+channels_asgi = get_default_application()
 
 application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
@@ -35,7 +35,7 @@ application = ProtocolTypeRouter({
         ),
     ),
     'http': AuthMiddlewareStack(URLRouter(
-        [re_path(r"", django_asgi_app)]))  # bokeh_app_config.routes.get_http_urlpatterns())),
+        [re_path(r"", channels_asgi)]))  # bokeh_app_config.routes.get_http_urlpatterns())),
 })
 
 # import os

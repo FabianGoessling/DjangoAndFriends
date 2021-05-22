@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 import os
 
 import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
+django.setup()
+
+
 from api.schema import MyGraphqlWsConsumer
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
@@ -16,11 +21,7 @@ from chat.consumers import ChatConsumer
 from django.apps import apps
 from django.core.asgi import get_asgi_application
 from django.urls import path, re_path
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
-django.setup()
 django_asgi_app = get_asgi_application()
-
 
 application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(

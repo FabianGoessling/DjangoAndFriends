@@ -28,8 +28,8 @@ application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
         URLRouter(
             # bokeh_app_config.routes.get_websocket_urlpatterns()
-            [path("api/graphql/", MyGraphqlWsConsumer.as_asgi()),
-             re_path(r'ws/chat/(?P<room_name>\w+)/$', ChatConsumer.as_asgi())
+            #[path("api/graphql/", MyGraphqlWsConsumer.as_asgi()),
+             [re_path(r'ws/chat/(?P<room_name>\w+)/$', ChatConsumer.as_asgi())
              ]
         ),
     ),

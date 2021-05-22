@@ -13,7 +13,7 @@ from channels.routing import get_default_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
 #django.setup()
-django_asgi_app = get_default_application()
+
 
 from api.schema import MyGraphqlWsConsumer
 from channels.auth import AuthMiddlewareStack
@@ -22,7 +22,7 @@ from chat.consumers import ChatConsumer
 from django.apps import apps
 from django.core.asgi import get_asgi_application
 from django.urls import path, re_path
-
+django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(

@@ -19,8 +19,9 @@ from django.urls import path, re_path
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
+django.setup()
 django_asgi_app = get_asgi_application()
-bokeh_app_config = apps.get_app_config('bokeh.server.django')
+
 
 application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
